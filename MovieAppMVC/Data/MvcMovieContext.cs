@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using MvcMovie.Models;
+using MovieAppMVC.Models;
 
-namespace MvcMovie.Data
+namespace MovieAppMVC.Data
 {
-    public class MvcMovieContext : DbContext
+    public class MovieAppMVCContext : DbContext
     {
-        public MvcMovieContext (DbContextOptions<MvcMovieContext> options)
+        public MovieAppMVCContext (DbContextOptions<MovieAppMVCContext> options)
             : base(options)
         {
         }
 
-        public DbSet<MvcMovie.Models.Movie> Movie { get; set; } = default!;
+        public DbSet<MovieAppMVC.Models.Movie> Movie { get; set; } = default!;
     }
 }

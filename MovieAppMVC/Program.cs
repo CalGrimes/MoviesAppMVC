@@ -1,18 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MvcMovie.Data;
+using MovieAppMVC.Data;
+using MovieAppMVC.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 if (builder.Environment.IsDevelopment())
 {
-    builder.Services.AddDbContext<MvcMovieContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("MvcMovieContext") ?? throw new InvalidOperationException("Connection string 'MvcMovieContext' not found.")));
+    builder.Services.AddDbContext<MovieAppMVCContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("MovieAppMVCContext") ?? throw new InvalidOperationException("Connection string 'MovieAppMVCContext' not found.")));
 }
 else
 {
-    builder.Services.AddDbContext<MvcMovieContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("ProductionMvcMovieContext") ?? throw new InvalidOperationException("Connection string 'MvcMovieContext' not found.")));
+    builder.Services.AddDbContext<MovieAppMVCContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("ProductionMovieAppMVCContext") ?? throw new InvalidOperationException("Connection string 'MovieAppMVCContext' not found.")));
 }
 
 
@@ -20,6 +21,13 @@ else
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    SeedData.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

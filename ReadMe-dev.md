@@ -6,7 +6,7 @@
 
 2. Build a model (Change name to the specific model)
     ```
-    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MvcMovie.Data.MvcMovieContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries -sqlite
+    dotnet aspnet-codegenerator controller -name MoviesController -m Movie -dc MovieAppMVC.Data.MovieAppMVCContext --relativeFolderPath Controllers --useDefaultLayout --referenceScriptLibraries -sqlite
     ```
 
 | **Parameter**              | **Description**                                                         |
