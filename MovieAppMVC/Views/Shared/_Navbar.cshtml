@@ -1,0 +1,11 @@
+@model List<NavLink>
+
+<ul class="navbar-nav flex-grow-1">
+    @foreach (var link in Model)
+    {
+        var isActive = ViewContext.RouteData.Values["controller"].ToString() == link.Controller && ViewContext.RouteData.Values["action"].ToString() == link.Action;
+        <li class="nav-item">
+            <a class="nav-link text-dark @(isActive ? "active" : "")" asp-area="@link.Area" asp-controller="@link.Controller" asp-action="@link.Action">@link.Text</a>
+        </li>
+    }
+</ul>
