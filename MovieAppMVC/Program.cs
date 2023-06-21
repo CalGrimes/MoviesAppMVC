@@ -15,7 +15,7 @@ else
     builder.Services.AddDbContext<MovieAppMVCContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING") ?? throw new InvalidOperationException("Connection string 'MovieAppMVCContext' not found.")));
 }
-builder.Services.AddStackExchangeRedisCach(options =>
+builder.Services.AddStackExchangeRedisCache(options =>
 {
 options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
 options.InstanceName = "SampleInstance";
