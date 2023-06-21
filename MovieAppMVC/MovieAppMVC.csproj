@@ -29,9 +29,11 @@
     <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="7.0.7" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Startup.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Startup.csproj" />
+    <None Update="MovieAppMVCContext-51ed9a1e-b746-4038-b8ab-95c00500fedb.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="MovieAppMVCContext-7cca0eb5-acc9-427f-9474-3c95b2ebae88.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>

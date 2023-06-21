@@ -1,26 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MovieAppMVC.Data;
 using MovieAppMVC.Models;
+using MovieAppMVC.Data;
+using MovieAppMVC.Service;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<MovieAppMVCContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING") ?? throw new InvalidOperationException("Connection string 'MovieAppMVCContext' not found.")));
 
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddDbContext<MovieAppMVCContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING") ?? throw new InvalidOperationException("Connection string 'MovieAppMVCContext' not found.")));
-}
-else
-{
-    builder.Services.AddDbContext<MovieAppMVCContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING") ?? throw new InvalidOperationException("Connection string 'MovieAppMVCContext' not found.")));
-}
-builder.Services.AddStackExchangeRedisCache(options =>
-{
-options.Configuration = builder.Configuration["AZURE_REDIS_CONNECTIONSTRING"];
-options.InstanceName = "SampleInstance";
-});
-
+// Register MovieService
+builder.Services.AddScoped<MovieService>();
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

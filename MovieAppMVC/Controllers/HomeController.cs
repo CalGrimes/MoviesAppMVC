@@ -1,21 +1,26 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using MovieAppMVC.Models;
+using MovieAppMVC.Service;
 
 namespace MovieAppMVC.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    //private readonly ILogger<HomeController> _logger;
+    private readonly MovieService _movieService;
 
-    public HomeController(ILogger<HomeController> logger)
+
+    public HomeController(MovieService movieService)
     {
-        _logger = logger;
+        //_logger = logger;y
+        _movieService = movieService;
     }
 
-    public IActionResult Index()
+    public ActionResult Index()
     {
-        return View();
+        var suggestedMovies = _movieService.GetSuggestedMovies();
+        return View(suggestedMovies);
     }
 
     public IActionResult Privacy()

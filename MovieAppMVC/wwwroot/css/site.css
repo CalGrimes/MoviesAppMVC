@@ -163,3 +163,11 @@ body.night-theme{
   color: #fff;
   border-bottom: 2px solid #fff;
 }
+
+h1.night-theme {
+    color: #fff;
+}
+
+div > p.night-theme {
+    color: #fff;
+}

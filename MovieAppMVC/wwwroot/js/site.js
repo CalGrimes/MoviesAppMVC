@@ -10,6 +10,7 @@ function toggleTheme() {
 const body = document.querySelector('body');
 const btn = document.querySelector('.btn-theme');
 const icon = document.querySelector('.btn__icon');
+const h1 = document.querySelector('h1');
 
 //to save the dark mode use the object "local storage".
 
@@ -27,7 +28,8 @@ function load(){
     store(false);
     icon.classList.add('fa-sun');
   } else if( darkmode == 'true'){ //if the dark mode is activated
-    body.classList.add('night-theme');
+      body.classList.add('night-theme');
+      h1.classList.add('night-theme');
     icon.classList.add('fa-moon');
   } else if(darkmode == 'false'){ //if the dark mode exists but is disabled
     icon.classList.add('fa-sun');

@@ -9,11 +9,10 @@ namespace MovieAppMVC.Data
 {
     public class MovieAppMVCContext : DbContext
     {
-        public MovieAppMVCContext (DbContextOptions<MovieAppMVCContext> options)
+        public MovieAppMVCContext(DbContextOptions<MovieAppMVCContext> options)
             : base(options)
         {
         }
-
         public DbSet<MovieAppMVC.Models.Movie> Movie { get; set; } = default!;
     }
 }
