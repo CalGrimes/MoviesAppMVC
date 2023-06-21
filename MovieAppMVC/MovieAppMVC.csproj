@@ -28,5 +28,12 @@
     </PackageReference>
     <PackageReference Include="ColorCode.Core" Version="2.0.14" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.7" />
+    <PackageReference Include="Microsoft.Extensions.Logging.AzureAppServices" Version="7.0.7" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Startup.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Startup.csproj" />
   </ItemGroup>
 </Project>
