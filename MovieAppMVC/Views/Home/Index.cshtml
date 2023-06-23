@@ -23,8 +23,15 @@
     <div class="container">
         <div class="slick-carousel">
             @foreach (var movie in Model)
-            {
-                <div class="slide-content">@movie.Title</div>
+                {
+
+                <div class="slide-content">
+                    @if (movie.Thumbnail != null && movie.Thumbnail.Length > 0)
+                        {
+                        <img src="data:image;base64,@Convert.ToBase64String(movie.Thumbnail)" alt="Thumbnail" />
+                        }
+                        @*@movie.ThumbnailFile*@
+                    </div>
             }
         </div>
     </div>

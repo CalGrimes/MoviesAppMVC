@@ -17,6 +17,7 @@ public class HomeController : Controller
         _movieService = movieService;
     }
 
+
     public ActionResult Index()
     {
         var suggestedMovies = _movieService.GetSuggestedMovies();

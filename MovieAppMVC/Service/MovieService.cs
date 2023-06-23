@@ -1,5 +1,6 @@
 ﻿using MovieAppMVC.Data;
 using MovieAppMVC.Models;
+using MovieAppMVC.Helpers;
 
 namespace MovieAppMVC.Service
 {
@@ -14,8 +15,20 @@ namespace MovieAppMVC.Service
 
         public List<Movie> GetSuggestedMovies()
         {
-            return _context.Movie.Where(m => m.Suggested).ToList();
+            List<Movie> movies = _context.Movie.Where(m => m.Suggested).ToList();
+            for (int i = 0; i < movies.Count; i++)
+            {
+                if (movies[i].Thumbnail != null)
+                {
+                    movies[i].ThumbnailFile = ConvertHelper.ConvertToIFormFile(movies[i].Thumbnail, movies[i].Title);
+                }
+            }
+
+            return movies;
+
         }
+
+      
     }
 
 }
