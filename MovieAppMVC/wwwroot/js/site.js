@@ -59,3 +59,27 @@ btn.addEventListener('click', () => {
     icon.classList.remove('animated');
   }, 500)
 })
+
+
+
+$(document).ready(function () {
+    $('.slick-carousel').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        // Add more options as needed
+    });
+});
+
+function previewImage(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#preview').attr('src', e.target.result);
+            $('#preview').show();
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+

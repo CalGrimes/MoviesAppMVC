@@ -42,6 +42,10 @@ namespace MovieAppMVC.Migrations
                     b.Property<bool>("Suggested")
                         .HasColumnType("INTEGER");
 
+                    b.Property<byte[]>("Thumbnail")
+                        .IsRequired()
+                        .HasColumnType("blob");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(60)

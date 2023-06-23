@@ -22,7 +22,8 @@ namespace MovieAppMVC.Migrations
                     Genre = table.Column<string>(type: "TEXT", maxLength: 30, nullable: false),
                     Price = table.Column<decimal>(type: "decimal(18, 2)", nullable: false),
                     Rating = table.Column<string>(type: "TEXT", maxLength: 5, nullable: false),
-                    Suggested = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Suggested = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Thumbnail = table.Column<byte[]>(type: "blob", nullable: false)
                 },
                 constraints: table =>
                 {

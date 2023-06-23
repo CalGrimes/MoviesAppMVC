@@ -18,5 +18,15 @@
             <p>@movie.Genre</p>
         </div>
     }
-
 </div>
+<div class="row">
+    <div class="container">
+        <div class="slick-carousel">
+            @foreach (var movie in Model)
+            {
+                <div class="slide-content">@movie.Title</div>
+            }
+        </div>
+    </div>
+</div>
+

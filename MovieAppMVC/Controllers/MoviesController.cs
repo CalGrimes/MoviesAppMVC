@@ -24,7 +24,7 @@ namespace MovieAppMVC.Controllers
         {
               return _context.Movie != null ? 
                           View(await _context.Movie.ToListAsync()) :
-                          Problem("Entity set 'MvcMovieContext.Movie'  is null.");
+                          Problem("Entity set 'MovieAppMVCContext.Movie'  is null.");
         }
 
         // GET: Movies/Details/5
@@ -51,13 +51,26 @@ namespace MovieAppMVC.Controllers
             return View();
         }
 
+        public async Task<byte[]> ConvertFormFileToByteBlobAsync(IFormFile file)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                return memoryStream.ToArray();
+            }
+        }
+
         // POST: Movies/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price,Rating,Suggested")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price,Rating,Suggested,ThumbnailFile")] Movie movie)
         {
+            if (movie.ThumbnailFile != null)
+            {
+                movie.Thumbnail = await ConvertFormFileToByteBlobAsync(movie.ThumbnailFile);
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(movie);
@@ -66,6 +79,8 @@ namespace MovieAppMVC.Controllers
             }
             return View(movie);
         }
+
+
 
         // GET: Movies/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -88,7 +103,7 @@ namespace MovieAppMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price,Rating,Suggested")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price,Rating,Suggested,Thumbnail")] Movie movie)
         {
             if (id != movie.Id)
             {
@@ -143,7 +158,7 @@ namespace MovieAppMVC.Controllers
         {
             if (_context.Movie == null)
             {
-                return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
+                return Problem("Entity set 'MovieAppMVCContext.Movie'  is null.");
             }
             var movie = await _context.Movie.FindAsync(id);
             if (movie != null)

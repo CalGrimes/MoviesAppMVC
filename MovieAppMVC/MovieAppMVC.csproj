@@ -6,6 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
   <ItemGroup>
     <None Remove="Views\HelloWorld\" />
   </ItemGroup>
@@ -30,9 +32,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Update="MovieAppMVCContext-51ed9a1e-b746-4038-b8ab-95c00500fedb.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="MovieAppMVCContext-7cca0eb5-acc9-427f-9474-3c95b2ebae88.db">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>

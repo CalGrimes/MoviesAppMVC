@@ -11,7 +11,7 @@ using MovieAppMVC.Data;
 namespace MovieAppMVC.Migrations
 {
     [DbContext(typeof(MovieAppMVCContext))]
-    [Migration("20230621191011_InitialCreate")]
+    [Migration("20230622171601_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -42,8 +42,12 @@ namespace MovieAppMVC.Migrations
                     b.Property<DateTime>("ReleaseDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool?>("Suggested")
+                    b.Property<bool>("Suggested")
                         .HasColumnType("INTEGER");
+
+                    b.Property<byte[]>("Thumbnail")
+                        .IsRequired()
+                        .HasColumnType("blob");
 
                     b.Property<string>("Title")
                         .IsRequired()
