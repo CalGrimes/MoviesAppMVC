@@ -11,6 +11,9 @@ const body = document.querySelector('body');
 const btn = document.querySelector('.btn-theme');
 const icon = document.querySelector('.btn__icon');
 const h1 = document.querySelector('h1');
+const table = document.querySelector('table');
+const navline = document.querySelector('a.nav-link.text-dark.active');
+
 
 //to save the dark mode use the object "local storage".
 
@@ -30,6 +33,8 @@ function load(){
   } else if( darkmode == 'true'){ //if the dark mode is activated
       body.classList.add('night-theme');
       h1.classList.add('night-theme');
+      table.classList.add('night-theme');
+      navline.classList.add('night-theme');
     icon.classList.add('fa-moon');
   } else if(darkmode == 'false'){ //if the dark mode exists but is disabled
     icon.classList.add('fa-sun');

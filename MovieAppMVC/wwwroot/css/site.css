@@ -45,15 +45,15 @@ body {
 }
 
 .navbar-nav > .nav-item > .nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 2px;
-  background-color: #333;
-  animation: line-grow 0.3s ease-in-out forwards;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 2px;
+    background-color: #6b21a8;
+    animation: line-grow 0.3s ease-in-out forwards;
 }
 
 @keyframes line-grow {
@@ -114,6 +114,12 @@ body {
 .suggested:hover {
     transform: scale(1.05);
 }
+
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
 
 
 /* -------------- MARGINS -------------- */
@@ -212,8 +218,9 @@ td > img {
 }
 
 /* -------------- DARKMODE -------------- */
-body.night-theme{
-  background-color: var(--dark-color);
+body.night-theme {
+    background-color: var(--dark-color);
+    color: #fff;
 }
 
 .night-theme .btn{
@@ -232,6 +239,10 @@ body.night-theme{
   color: var(--dark-icon-color);
 }
 
+table.night-theme {
+    color: #fff;
+}
+
 .navbar.night-theme {
   background-color: var(--dark-color);
   color: #fff;
@@ -248,6 +259,10 @@ body.night-theme{
 .nav-link.active.night-theme {
   color: #fff;
   border-bottom: 2px solid #fff;
+}
+
+.night-theme .navbar-nav > .nav-item > .nav-link.active::after {
+    background-color: #fbbf24;
 }
 
 h1.night-theme {
