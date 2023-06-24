@@ -22,18 +22,37 @@
 <div class="row">
     <div class="container">
         <div class="slick-carousel">
-            @foreach (var movie in Model)
-                {
-
+    @{
+        int nonNullThumbnailCount = 0;
+        for (var i = 0; i < Model.Count; i += 2)
+        {
+            if (Model[i].Thumbnail != null && Model[i].Thumbnail.Length > 0)
+            {
                 <div class="slide-content">
-                    @if (movie.Thumbnail != null && movie.Thumbnail.Length > 0)
-                        {
-                        <img src="data:image;base64,@Convert.ToBase64String(movie.Thumbnail)" alt="Thumbnail" />
-                        }
-                        @*@movie.ThumbnailFile*@
-                    </div>
+                    <img src="data:image;base64,@Convert.ToBase64String(Model[i].Thumbnail)" alt="Thumbnail" />
+                </div>
+                nonNullThumbnailCount++;
             }
-        </div>
+
+            if (i + 1 < Model.Count && nonNullThumbnailCount < 2)
+            {
+                if (Model[i + 1].Thumbnail != null && Model[i + 1].Thumbnail.Length > 0)
+                {
+                    <div class="slide-content">
+                        <img src="data:image;base64,@Convert.ToBase64String(Model[i + 1].Thumbnail)" alt="Thumbnail" />
+                    </div>
+                    nonNullThumbnailCount++;
+                }
+            }
+
+            if (nonNullThumbnailCount >= 2)
+            {
+                break; // Stop the loop once two non-null thumbnails are shown
+            }
+        }
+    }
+</div>
+
     </div>
 </div>
 

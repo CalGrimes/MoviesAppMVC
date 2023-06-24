@@ -79,31 +79,6 @@ body {
   text-align: center;
 }
 
-.carousel-navigation {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.carousel-navigation .e-chevron {
-  display: inline-block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  cursor: pointer;
-  font-size: 16px;
-  color: #333;
-  border: 1px solid #333;
-  border-radius: 50%;
-  margin: 0 5px;
-}
-
-.carousel-navigation .e-chevron:hover {
-  background-color: #333;
-  color: #fff;
-}
-
 .preview-thumbnail {
     display: none;
     width: 100px;
@@ -153,6 +128,11 @@ body {
     margin-bottom: 10px;
 }
 
+td > img {
+    width: 50px;
+    height: 100%;
+}
+
 /* -------------- BUTTON -------------- */
 .btn-theme{
   background-color: #fff;
@@ -198,6 +178,16 @@ body {
 .btn__icon{
   color: var(--light-icon-color);
   font-size: 1.5rem;
+}
+
+/* -------------- CAROUSEL ------------ */
+
+
+
+
+.slide-content > img {
+    width: 50%;
+    height: 300px;
 }
 
 /* -------------- ANIMATION ------------ */
