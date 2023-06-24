@@ -100,7 +100,9 @@ body {
 }
 
 .suggested {
-    flex-basis: calc(33.33% - 10px); /* Adjust this value to leave some space between images */
+    width: 200px;
+    height: 300px;
+    flex-basis: calc(33.33% - 50px); /* Adjust this value to leave some space between images */
     margin-bottom: 10px; /* Adjust this value to set the vertical spacing between rows */
     display: flex;
     justify-content: center;
