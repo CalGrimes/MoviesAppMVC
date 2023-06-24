@@ -22,7 +22,7 @@
             var count = 0;
             for (var i = 0; i < shuffledModel.Count && count < 3; i++)
             {
-                if (shuffledModel[i].Thumbnail != null && shuffledModel[i].Thumbnail.Length > 0)
+                if (shuffledModel[i].Thumbnail != null && shuffledModel[i].Thumbnail.Length > 0 && shuffledModel[i].Suggested == true)
                 {
                     <div class="suggested">
                         <a href="@Url.Action("Details", "Movies", new { id = shuffledModel[i].Id })">
